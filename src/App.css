@@ -9,3 +9,6 @@ html, body {
   padding: 0;
   height: 100%;
 }
+.error{
+  border-color: red;
+}
