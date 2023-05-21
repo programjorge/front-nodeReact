@@ -3,22 +3,23 @@
   height: 15%;
   background-color: blueviolet;
   color: white;
+  margin: 0px;
 }
 html, body {
   position: relative;
   margin: 0;
   padding: 0;
   height: 100%;
-}
-.error{
-  border-color: red;
+  background-color: rgb(61, 59, 59);
+  color: white;
 }
 .parrafoError{
   color: red;
+  margin-right: 10px;
 }
 .logo{
-  width: 45px;
-  height: 45px;
+  width: 165px;
+  height: 60px;
 }
 .headerBlock{
   display: flex;
@@ -27,11 +28,54 @@ html, body {
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: white;
+  color: red;
 }
-input{
-  margin: 5px;
+.input{
+  margin: 15px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 2px solid red;
+  text-align: center;
+  color: red;
+
+}
+.botonAction{
+  display: inline-block;
+  padding: 15px 15px;
+  margin-right: 15px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 15px;
+}
+.botonAction2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 15px;
+  margin-right: 15px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 15px;
+}
+.botonAction:active{
+  border: 1px solid red;
+  color: red;
+  background-color: white;
+  transform: translateY(4px);
 }
 .offScreen{
+  z-index: 2;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -47,9 +91,10 @@ input{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: blueviolet;
+  background-color: white;
+  color: red;
   width: 350px;
-  height: 250px;
+  height: 300px;
   border-radius: 5px;
 }
 .regScreen > input, button{
@@ -58,20 +103,78 @@ input{
   text-align: center;
   border-radius: 3px;
 }
+.warning{
+  padding-left: 10px;
+
+}
 .cerrar{
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 5px;
   color: red;
 }
-.regButton{
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  background-color:greenyellow;
-  border-color: green;
-  box-shadow: none;
+.cerrar:hover{
+  cursor: pointer;
 }
+
 .completo{
   color: greenyellow;
+}
+.h3{
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+.Products{
+  position: relative;
+  width: 90%;
+  margin: 2%;
+  padding: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  border-radius: 10px;
+}
+.divProduct{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  margin: 2%;
+}
+.precio{
+  color: red;
+}
+.imgProduct{
+  width: 100%;
+  height: 60%;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+.navBar{
+  display: flex;
+  flex-direction: row;
+  background-color: red;
+  padding-left: 5%;
+  padding-right: 5%;
+
+}
+.enlace{
+  position: relative;
+  width: 20%;
+  margin-right: 5%;
+  margin-left: 3%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+.enlace > svg{
+  padding-top: 10px;
+  margin-right: 10px;
+}
+.enlace:hover {
+  color: black;
+  border: 1px solid red;
 }

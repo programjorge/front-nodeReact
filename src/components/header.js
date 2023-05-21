@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import logo from "../img/logo.png"
 
+
 const Header = () => {
 
     //metodos
@@ -14,8 +15,6 @@ const Header = () => {
                 setConnection(true)
                 break;
               } else {
-                document.getElementById("user").className = "error"
-                document.getElementById("password").className = "error"
                 setError("Usuario o contrasña equivocados")
                 setConnection(false)
               }
@@ -127,6 +126,7 @@ const Header = () => {
             onChange={handleChange}
             type="text"
             placeholder="Usuario"
+            className="input"
             required
           />
           <input 
@@ -136,9 +136,10 @@ const Header = () => {
             value={user.password}
             onChange={handleChange}
             placeholder="Contraseña"
+            className="input"
             required
            />
-          <input type="submit" />
+          <input type="submit" className="botonAction" />
           <a onClick={openRegister}>Registrar</a>
         </form>
       </div>
@@ -147,14 +148,19 @@ const Header = () => {
 
     //definicion de el state header que tendra el user logeado
       const headerLog = (
-        <div className="header"><h1>{user.userName}</h1></div>
+        <div className=""><a>{user.userName}</a></div>
       );
 
     //definicion de la pantalla de registro
     const registerScreen = (
       <div className="offScreen">
+
         <form className="regScreen" onSubmit={registerUser}>
-        <p onClick={closeRegister} className="cerrar">cerrar</p>
+        <p>Registro</p>
+        <svg onClick={closeRegister} xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-x-circle cerrar" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
         <input
             id = "user2"
             name="userNameReg"
@@ -162,6 +168,7 @@ const Header = () => {
             placeholder="Usuario"
             value={userReg.userNameReg}
             onChange={handleChangeReg}
+            className="input"
             required
           />
         <input 
@@ -171,10 +178,11 @@ const Header = () => {
             placeholder="Contraseña"
             value={userReg.passwordReg}
             onChange={handleChangeReg}
+            className="input"
             required
           />
            <a className="parrafoError">{errorReg}</a>
-          <button className="regButton">Registrar</button>
+          <button className="botonAction2">Registrar</button>
         </form>
       </div>
     )
