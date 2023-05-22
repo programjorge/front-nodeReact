@@ -1,11 +1,11 @@
 import Nav from "./navBar"
+import Layout from "../layaout/layaout"
 const Games = () => {
     return (
-      <div>
+      <Layout>
             {<Nav/>}
             <h2>Games</h2>
-      </div>
-           
+      </Layout>
       )
 }
 export default Games;
