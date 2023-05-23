@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Nav from "./navBar";
 import axios from "axios";
 import Layout from "../layaout/layaout";
+import Product from "./product";
+
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState();
@@ -11,22 +13,16 @@ const Home = () => {
     getProducts();
   }, []);
 
-  useEffect(() => {
-    if (product) {
-      // Aquí puedes realizar las operaciones necesarias con el producto actualizado
-      // const oneProduct = (
-      //   <div className="">
-      //     <p>{product.id}</p>
-      //     <p>{product.name}</p>
-      //     <p>{product.price}</p>
-      //     <p>{product.image}</p>
-      //   </div>
-      // );
-      console.log(product);
-      // setclickProduct(true);
-      // Otras acciones...
-    }
-  }, [product]);
+  // useEffect(() => {
+  //   if (product) {
+  //     // Aquí puedes realizar las operaciones necesarias con el producto actualizado
+      
+  //     // );
+  //     console.log(product);
+  //     // setclickProduct(true);
+  //     // Otras acciones...
+  //   }
+  // }, [product]);
 
   const getProducts = async () => {
     try {
@@ -43,6 +39,7 @@ const Home = () => {
         "http://localhost:8080/api/products/" + id,
         { params: { id } }
       );
+      response.data.id = id
       setProduct(response.data);
     } catch (error) {
       console.error(error);
@@ -51,9 +48,10 @@ const Home = () => {
 
   return (
     <Layout>
-    {/* aqui va el if ternario para sacar el producto */}
         {<Nav/>}
-        {/* {<ModalItem name = product.name, price = product.price></ModalItem>} */}
+        {product ? (
+            <Product id={product.id} name={product.name} price={product.price} img = {product.image}/>
+          ) : null}
         <div className="Products">
           <h3 className="h3">Todos los productos</h3>
           {products.map((product) => (
