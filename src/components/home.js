@@ -32,6 +32,9 @@ const Home = () => {
       // console.error(error);
     }
   };
+  const closeProduct = () =>{
+      setProduct(false)
+  }
 
   const handleDivClick = async (id) => {
     try {
@@ -50,7 +53,7 @@ const Home = () => {
     <Layout>
         {<Nav/>}
         {product ? (
-            <Product id={product.id} name={product.name} price={product.price} img = {product.image}/>
+            <Product id={product.id} name={product.name} price={product.price} img = {product.image} onAction={closeProduct}/>
           ) : null}
         <div className="Products">
           <h3 className="h3">Todos los productos</h3>

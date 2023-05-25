@@ -164,7 +164,17 @@ const Header = () => {
       return (
       <header className="header">
         {showRegister ? registerScreen : ""}  
-        {user ? (<div><a>{user.userName}</a><button onClick={logOut}>Log out</button></div>) : (
+        {user ? (
+          <div className="headerLogeado">
+            <div>
+              <img className="logo" alt = "logo" src = {logo}></img>
+            </div>
+            <div>
+              <b>{user.userName}</b>
+              <button className="buttonLogeado" onClick={logOut}>Log out</button>
+            </div>
+          </div>
+          ) : (
         <div className="headerBlock">
           <img className="logo" alt = "logo" src = {logo}></img>
           <form onSubmit={handleLogin}>
