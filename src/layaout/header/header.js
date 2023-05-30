@@ -12,22 +12,6 @@ const Header = () => {
     registerUser
   } = useContext(UserContext)
     //metodos
-    //metodo para logearse
-    // const log = async(event) =>{
-    //     axios.get("http://localhost:8080/api")
-    //     .then((response) => {
-    //        for(let i = 0; i < response.data.length; i++){
-    //           if(user.userName === response.data[i].userName && user.password === response.data[i].Password){
-    //             setConnection(true)
-    //             break;
-    //           } else {
-    //             setError("Usuario o contrasña equivocados")
-    //             setConnection(false)
-    //           }
-    //        }
-    //     })
-    //     event.preventDefault();
-    // }
 
     //metodo para abrir la pestaña de regitro
     const openRegister = () =>{
@@ -38,40 +22,6 @@ const Header = () => {
     const closeRegister = () =>{
       setShowRegister(false)
     }
-
-    //metodo para registrar usuario
-    // const registerUser = async(event) =>{
-    //   if(userReg.userNameReg !== "" && userReg.passwordReg !== ""){
-    //     let data = {
-    //       title: 'Mi post registro',
-    //       body: 'post para registrar un usuario',
-    //       userName: userReg.userNameReg,
-    //       Password: userReg.passwordReg
-    //     }
-    //     axios.post("http://localhost:8080/api", data)
-    //     .then(() =>{
-    //       axios.get("http://localhost:8080/api")
-    //       .then((response) => {
-    //         for(let i = 0; i < response.data.length; i++){
-    //           if(user.userName === response.data[i].userName && user.password === response.data[i].Password){
-    //              break;
-    //           }
-    //         }
-    //       }).then(()=>{
-    //         setRegister(false)
-    //         setError("")
-    //         setregComplete("Usuario registrado")
-    //       })
-    //     })
-    //     .catch(error => {
-    //       setErrorReg("Este usuario ya esta registrado")
-    //     });
-    //   } else {
-    //     console.log("no pueden estar vacios")
-
-    //   }
-    //   event.preventDefault();
-    // }
 
     //metodo para conseguir almacenar los value en el usuario
     const handleChange = (event) => {

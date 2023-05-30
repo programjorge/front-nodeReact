@@ -7,22 +7,11 @@ import Product from "./product";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState();
-  // const [clickProduct, setclickProduct] = useState();
 
   useEffect(() => {
     getProducts();
   }, []);
 
-  // useEffect(() => {
-  //   if (product) {
-  //     // Aquí puedes realizar las operaciones necesarias con el producto actualizado
-      
-  //     // );
-  //     console.log(product);
-  //     // setclickProduct(true);
-  //     // Otras acciones...
-  //   }
-  // }, [product]);
 
   const getProducts = async () => {
     try {
@@ -33,7 +22,7 @@ const Home = () => {
     }
   };
   const closeProduct = () =>{
-      setProduct(false)
+      setProduct()
   }
 
   const handleDivClick = async (id) => {
