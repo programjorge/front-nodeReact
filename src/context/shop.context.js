@@ -5,11 +5,28 @@ export const CartContext = createContext();
 
 // Proveedor del contexto
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState([]);
 
   // Agrega un producto al carrito
   const addToCart = (product) => {
-    setCartItems(product.id,product.name,product.price);
+
+    setCartItems(state => {
+      let cantidad = state.filter(item => item.id === product.id)[0]?.cantidad
+      console.log(cantidad)
+      if(cantidad){
+        const index = state.findIndex(item => item.id === product.id)
+        const newState = [...state]
+        newState.splice(index,1,{...product,cantidad: cantidad+1})
+        return newState
+      }
+       else{
+        return [
+          ...state,
+          {...product,cantidad:1}
+        ]
+      }
+    });
+
   };
 
   // Elimina un producto del carrito

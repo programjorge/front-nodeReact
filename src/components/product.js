@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import estrella0 from "../img/0estrellas.png"
-import estrella1 from "../img/1estrellas.png"
-import estrella2 from "../img/2estrellas.png"
-import estrella3 from "../img/3estrellas.png"
-import estrella4 from "../img/4estrellas.png"
 import estrella5 from "../img/5estrellas.png"
+import { CartContext } from "../context/shop.context";
 
-const Product = (props) => {
+const Product = ({id,name,price,onAction,img}) => {
   const [comentaries, setComentaries] = useState(null);
+
+  const {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    clearCart,
+  } = useContext(CartContext)
 
   function toggleComentarios(event) {
     event.preventDefault();
@@ -28,7 +31,7 @@ const Product = (props) => {
 
   useEffect(() => {
     const getComentaries = async () => {
-      let productId = props.id;
+      let productId = id;
       try {
         const response = await axios.get(
           "http://localhost:8080/api/comentaries/" + productId
@@ -40,16 +43,23 @@ const Product = (props) => {
     };
 
     getComentaries();
-  }, [props.id]);
+  }, [id]);
 
+  const handleAdd = () =>{
+    addToCart({
+      id,
+      name,
+      price,
+    })
+  }
   return (
     <div className="productScreen">
       <div className="leftScreen">
-        <input id={props.id} hidden></input>
-        <img src={props.img}></img>
+        <input id={id} hidden></input>
+        <img src={img}></img>
         <div className="valoraciones"></div>
         <div className="namePrice">
-          <b>{props.name}</b>
+          <b>{name}</b>
         </div>
       </div>
       <div className="rightScreen">
@@ -90,11 +100,11 @@ const Product = (props) => {
             <b>Comentar</b>
           </button>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-x cerrarProduct" viewBox="0 0 16 16" onClick={props.onAction}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-x cerrarProduct" viewBox="0 0 16 16" onClick={onAction}>
           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
         </svg>
-        <a>{props.price}</a>
-        <p onClick>añadir</p>
+        <a>{price}</a>
+        <p onClick = {handleAdd}>añadir</p>
       </div>
     </div>
   );
