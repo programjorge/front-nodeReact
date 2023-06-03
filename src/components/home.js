@@ -42,7 +42,7 @@ const Home = () => {
     <Layout>
         {<Nav/>}
         {product ? (
-            <Product id={product.id} name={product.name} price={product.price} img = {product.image} onAction={closeProduct}/>
+            <Product id={product.id} name={product.name} price={product.price} img = {product.image} onAction={closeProduct} description={product.description}/>
           ) : null}
         <div className="Products">
           <h3 className="h3">Todos los productos</h3>

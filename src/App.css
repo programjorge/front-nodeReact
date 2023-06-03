@@ -208,7 +208,7 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(58, 58, 58);
+  background-color: black;
   border-radius: 10px 0px 0px 10px;
   padding-top: 20px;
   width: 45%;
@@ -295,7 +295,7 @@ button:hover{
   height: 150px;
   transition: .5s ease;
   max-height: 150px;
-  overflow:scroll;
+  overflow-y: auto;
 }
 .noProduct{
   margin-top: 10px;
@@ -314,7 +314,6 @@ button:hover{
   margin-bottom: 5px;
   margin-left: 5px;
   padding: 5px;
-
 }
 .estrella{
   width: 100px;
@@ -347,6 +346,11 @@ button:hover{
 }
 #selectEstrellas:hover{
   cursor: pointer;
+}
+.estrellas{
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
 }
 .puntuar{
   background-color: red;
