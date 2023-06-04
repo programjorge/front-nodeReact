@@ -358,3 +358,35 @@ button:hover{
   color: white;
   border-radius: 3px;
 }
+.description{
+  width: 90%;
+  margin-left: 5%;
+  text-align: center;
+}
+.precioAñadir{
+  margin-top: 5%;
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.precioAñadir > a, .precioAñadir > b{
+  background-color: red;
+  padding: 15px;
+  border-radius: 13px;
+  color: white;
+}
+.precioAñadir >b:hover{
+  cursor: pointer;
+}
+.valoraciones{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.valoraciones > p{
+  text-align: center;
+  width: 100%;
+}

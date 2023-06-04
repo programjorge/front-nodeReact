@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import estrella5 from "../img/5estrellas-removebg-preview.jpg"
+import estrella5B from "../img/5estrellas.png"
 import { CartContext } from "../context/shop.context";
 import estrella0 from "../img/0estrellas-removebg-preview.jpg"
 import estrella1 from "../img/1estrellas-removebg-preview.jpg"
@@ -12,6 +13,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
   const [comentaries, setComentaries] = useState(null);
   const [sendComentaries, setSendComentaries] = useState()
   const [puntuacion, setPuntuacion] = useState()
+  const [contador, setContador] = useState(0)
 
   const {
     cartItems,
@@ -85,6 +87,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
           })
           puntuacionFinal = totalPuntuaciones/contador
           setPuntuacion(Math.round(puntuacionFinal));
+          setContador(contador)
         })
 
       }catch (error) {
@@ -119,6 +122,21 @@ const Product = ({id,name,price,onAction,img, description}) => {
             return <img className="estrellas" src={estrella0} alt="Imagen 3" />;
     }
   };
+  const updateRating = async() =>{
+    const url = 'http://localhost:8080/api/ratings';
+          axios.post(url, {
+            ProductId:id,
+            RatingId: document.getElementById("selectEstrellas").value
+          })
+          .then(response => {
+            setSendComentaries("¡valoracion enviada con exito!")
+            console.log('Respuesta del servidor:', response.data);
+          })
+          .catch(error => {
+            setSendComentaries("ha habido un problema al enviar la valoracion")
+            console.error('Error al realizar la solicitud:', error);
+          });
+  }
   return (
     <div className="productScreen">
       <div className="leftScreen">
@@ -126,6 +144,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
         <img src={img}></img>
         <div className="valoraciones">
           {renderizarEstrella(puntuacion)}
+          <p>({contador} valoraciones)</p>
         </div>
         <div className="namePrice">
           <b>{name}</b>
@@ -136,16 +155,15 @@ const Product = ({id,name,price,onAction,img, description}) => {
           
           <div className="verComentarios">
           <div className="divPuntuar">            
-              <img className="estrella" src={estrella5}></img>
+              <img className="estrella" src={estrella5B}></img>
                 <select id = "selectEstrellas">
-                    <option className="selectEstrellas" value = "0">0</option>
                     <option className="selectEstrellas" value = "1">1</option>
                     <option className="selectEstrellas" value = "2">2</option>
                     <option className="selectEstrellas" value = "3">3</option>
                     <option className="selectEstrellas" value = "4">4</option>
                     <option className="selectEstrellas" value = "5">5</option>
                 </select>
-                <button className="puntuar">Puntuar Producto</button></div>
+                <button className="puntuar" onClick={updateRating}>Puntuar Producto</button></div>
             <a onClick={toggleComentarios}>Ver comentarios</a>
 
 
@@ -174,11 +192,13 @@ const Product = ({id,name,price,onAction,img, description}) => {
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-x cerrarProduct" viewBox="0 0 16 16" onClick={onAction}>
           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
         </svg>
-        <div>
+        <div className="description">
           {description}
         </div>
-        <a>{price}</a>
-        <p onClick = {handleAdd}>añadir</p>
+        <div className="precioAñadir">
+          <a>Precio: <b>{price}€</b></a>
+          <b onClick = {handleAdd}>Añadir a la cesta</b>
+        </div>
       </div>
     </div>
   );
