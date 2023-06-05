@@ -171,13 +171,13 @@ html, body {
   display: flex;
   flex-direction: row;
   background-color: red;
-  padding-left: 5%;
-  padding-right: 5%;
+  color: white;
+  width: 100%;
 
 }
 .enlace{
   position: relative;
-  width: 20%;
+  width: 100%;
   margin-right: 5%;
   margin-left: 3%;
   cursor: pointer;
@@ -190,7 +190,6 @@ html, body {
 }
 .enlace:hover {
   color: black;
-  border: 1px solid red;
 }
 .productScreen{
   z-index: 1;
@@ -332,7 +331,8 @@ button:hover{
   color: red;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -50px;
+  z-index: 1;
 }
 .cerrarProduct:hover{
   cursor: pointer;
@@ -360,8 +360,12 @@ button:hover{
 }
 .description{
   width: 90%;
-  margin-left: 5%;
+  margin-left: 4%;
   text-align: center;
+  background-color: rgb(58, 58, 58);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 .precioAñadir{
   margin-top: 5%;
@@ -389,4 +393,120 @@ button:hover{
 .valoraciones > p{
   text-align: center;
   width: 100%;
+}
+.productoCarrito{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  background-color: white;
+  color: black;
+  margin: 10px;
+  align-items: center;
+  border-radius: 5px;
+}
+.productoCarrito > b, svg{
+  width: 20%;
+  padding: 10px;
+}
+.productoCarrito > svg:hover{
+  cursor: pointer;
+}
+.precioTotal{
+  background-color: red;
+  color: white;
+  width: 97%;
+  padding: 15px;
+  border-radius: 5px;
+}
+.shopItems{
+  width: 100%;
+}
+.shop{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formPedido{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-top: 20px;
+  margin-left: 5%;
+  border-radius: 5px;
+  width: auto;
+}
+.formPedido > div > input {
+  margin: 10px;
+  width: 300px;
+  padding: 10px;
+  background-color: rgb(58, 58, 58);
+  color: white;
+  border-radius: 5px;
+}
+.formLogitos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.formLogitos > svg{
+  background-color: red;
+  border-radius: 50%;
+  width: 20px;
+  margin-left: 5px;
+  height: 20px;
+}
+.formPedido > button {
+  padding: 10px;
+  background-color: red;
+  color:white;
+  width: 150px;
+  text-align: center;
+  height: 50px;
+}
+h4{
+  color: red;
+  border-bottom: 1px solid red;
+}
+.pisoPortal {
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.pisoPortal > input {
+  width: 130px !important;
+  padding: 10px !important;
+  background-color: rgb(58, 58, 58);
+  color: white;
+}
+.totalForm{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+
+}
+#imgTarjetas{
+  height: 100px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+#piso{
+  margin-right: 10px;
+}
+.logoForm{
+  width: 500px;
+  height: 300px;
+}
+#cvc{
+  width: 130px !important;
+  padding: 10px !important;
+  background-color: rgb(58, 58, 58);
+  color: white;
 }

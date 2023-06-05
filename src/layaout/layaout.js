@@ -1,5 +1,5 @@
 import Header from "./header/header"
-
+import Nav from "../components/navBar.js"
 const Layout = ({children}) =>{
     return (
         <>
@@ -7,6 +7,7 @@ const Layout = ({children}) =>{
                 <Header/>
             </header>
             <main>
+                <Nav/>
                 {children}
             </main>
             <footer>

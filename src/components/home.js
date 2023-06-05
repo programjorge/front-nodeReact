@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Nav from "./navBar";
 import axios from "axios";
 import Layout from "../layaout/layaout";
 import Product from "./product";
@@ -40,7 +39,7 @@ const Home = () => {
 
   return (
     <Layout>
-        {<Nav/>}
+
         {product ? (
             <Product id={product.id} name={product.name} price={product.price} img = {product.image} onAction={closeProduct} description={product.description}/>
           ) : null}
