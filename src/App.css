@@ -137,7 +137,7 @@ html, body {
 .h3{
   position: absolute;
   top: 0;
-  left: 10px;
+  left: 70px;
 }
 .Products{
   position: relative;
@@ -190,6 +190,11 @@ html, body {
 }
 .enlace:hover {
   color: black;
+}
+.divPrecio{
+  background-color: red;
+  color: white;
+  border-radius: 5px;
 }
 .productScreen{
   z-index: 1;
@@ -509,4 +514,86 @@ h4{
   padding: 10px !important;
   background-color: rgb(58, 58, 58);
   color: white;
+}
+.bannerHome{
+  background-image: url("https://sm.ign.com/t/ign_it/news/n/nintendo-d/nintendo-direct-february-2023-everything-announced-including_qgqk.1280.jpg");
+  width: 100%;
+  height: 350px;
+  background-size:cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  clip-path: polygon(-180% 0%, 100% 0%, 100% 100%, 100% 100%);
+}
+.bannerHome > div{
+  padding: 20px;
+  margin: 5px;
+  max-width: 40%;
+  text-align: justify;
+  color: white;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.153);
+}
+.intro{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: red;
+  margin-bottom: 25px;
+}
+.intro > h2{
+  color: white;
+}
+.intro-cols{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  color: red;
+}
+.intro-cols > div {
+  width: 25%;
+  background-color: white;
+  border-radius: 5px;
+}
+.iconoIntro{
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-image: url("https://d3t4nwcgmfrp9x.cloudfront.net/upload/tendencias-entrega-paquetes-para-2022-643x342.jpg");
+  border-radius: 5px 5px 0px 0px;
+  
+}
+h3{
+  text-align: center;
+}
+.intro-cols > div >p {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid red;
+}
+.bannerHome:hover{
+  cursor: pointer;
+}
+.iconoPagar{
+  width: 100%;
+  height: 150px;
+  background-size:cover;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8UoQnlkRJy8PmCxZoTS64v2qRTKoAR63Tew&usqp=CAU");
+  border-radius: 5px 5px 0px 0px;
+}
+.iconoPrecios{
+  width: 100%;
+  height: 150px;
+  background-size:cover;
+  border-radius: 5px 5px 0px 0px;
+  background-image: url("https://previews.123rf.com/images/dolgachov/dolgachov1603/dolgachov160305561/53969305-las-finanzas-las-personas-el-ahorro-y-la-inversi%C3%B3n-concepto-mujer-de-negocios-feliz-con-euro-del.jpg");
 }
