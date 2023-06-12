@@ -1,4 +1,5 @@
 import Header from "./header/header"
+import Footer from "./footer/footer"
 import Nav from "../components/navBar.js"
 const Layout = ({children}) =>{
     return (
@@ -11,7 +12,7 @@ const Layout = ({children}) =>{
                 {children}
             </main>
             <footer>
-
+                <Footer/>
             </footer>
         </>
     )

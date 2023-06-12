@@ -86,7 +86,13 @@ const Home = () => {
                 </div>
             </div>
         </div>
-        <div>otro apartado</div>
+        <div className="map">
+          <div>
+            <h5>Haznos una visita</h5>
+            encuentranos en nuestra tienda física si desea un trato todavia mas cercano o cree que podemos ayudarle en alguna incidencia.
+          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24223.162673245213!2d-3.1731725!3d40.63219015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd43ac63987ff53b%3A0x800a702e2c07492e!2sGuadalajara!5e0!3m2!1ses!2ses!4v1686579671725!5m2!1ses!2ses" title="guadalajara" width="400" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </Layout>
   );
 };

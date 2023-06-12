@@ -19,7 +19,7 @@ const UserProvider = ({children}) =>{
                 break;
               } else {
                 setUser(null)
-                setError("Usuario o contrasña equivocados")
+                setError("Usuario o contraseña equivocados")
               }
            }
         })
