@@ -619,6 +619,9 @@ footer{
   position: relative;
   bottom: 0;
 }
+.divProduct:hover{
+  cursor: pointer;
+}
 a{
   color: white;
 }
@@ -655,4 +658,31 @@ footer > b{
   justify-content: center;
   align-items: center;
   text-align: center
+}
+.divBuscador{
+  display: flex;
+  flex-direction: row;
+}
+.divInputBuscador{
+  display: flex;
+  flex-direction: row;
+  margin-left: 6%;
+  height: 50px;
+}
+.divInputBuscador > svg{
+  width: 25px;
+  height: 80%;
+  background-color: red;
+  border-radius: 5px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+
+}
+.divInputBuscador > input{
+  padding: 10px;
+  height: 80%;
+  background-color: white;
+  border: none;
+  text-align: center;
+  border-radius: 5px 0 0 5px;
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "../layaout/layaout";
 import Product from "./product";
+import Swal from 'sweetalert2'
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -36,6 +37,26 @@ const Home = () => {
       console.error(error);
     }
   };
+  
+  const search = () =>{
+    let busqueda = document.getElementById("buscador").value
+    for(let i = 0; i<products.length; i++){
+      console.log(products[i], " ")
+      if(products[i].name === busqueda){
+        handleDivClick(products[i].id)
+        break
+      } else{
+        if(i === products.length-1 && products[i].name != busqueda){
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ha encontrado el producto que buscas',
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+        }
+      }
+    }
+  }
 
   return (
     <Layout>
@@ -46,6 +67,14 @@ const Home = () => {
           <div key='6'>
             <b>Entra en un mundo de aventura</b><br></br>
             <p>Olvida todo lo que sabes sobre los juegos de The Legend of Zelda. Entra en un mundo de descubrimientos, exploración y aventura en The Legend of Zelda: Breath of the Wild, un juego de la serie que rompe con las convenciones. Viaja por prados, bosques y cumbres montañosas para descubrir qué ha sido del asolado reino de Hyrule en esta aventura a cielo abierto.</p>
+          </div>
+        </div>
+        <div className="divBuscador">
+          <div className="divInputBuscador">
+            <input id = "buscador" placeholder="Buscar producto..."></input>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16" onClick={search}>
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
           </div>
         </div>
         <div className="Products">
@@ -91,7 +120,7 @@ const Home = () => {
             <h5>Haznos una visita</h5>
             encuentranos en nuestra tienda física si desea un trato todavia mas cercano o cree que podemos ayudarle en alguna incidencia.
           </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24223.162673245213!2d-3.1731725!3d40.63219015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd43ac63987ff53b%3A0x800a702e2c07492e!2sGuadalajara!5e0!3m2!1ses!2ses!4v1686579671725!5m2!1ses!2ses" title="guadalajara" width="400" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24223.162673245213!2d-3.1731725!3d40.63219015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd43ac63987ff53b%3A0x800a702e2c07492e!2sGuadalajara!5e0!3m2!1ses!2ses!4v1686579671725!5m2!1ses!2ses" title="guadalajara" width="400" height="300" loading="lazy"></iframe>
         </div>
     </Layout>
   );

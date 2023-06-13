@@ -8,6 +8,7 @@ import estrella1 from "../img/1estrellas-removebg-preview.jpg"
 import estrella2 from "../img/2estrellas-removebg-preview.jpg"
 import estrella3 from "../img/3estrellas-removebg-preview.jpg"
 import estrella4 from "../img/4estrellas-removebg-preview.jpg"
+import Swal from 'sweetalert2'
 
 const Product = ({id,name,price,onAction,img, description}) => {
   const [comentaries, setComentaries] = useState(null);
@@ -21,6 +22,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
     removeFromCart,
     clearCart,
   } = useContext(CartContext)
+
 
   function toggleComentarios(event) {
     event.preventDefault();
@@ -48,14 +50,21 @@ const Product = ({id,name,price,onAction,img, description}) => {
             description: comentario
           })
           .then(response => {
-            console.log('Respuesta del servidor:', response.data);
-            setSendComentaries("Se ha enviado tu comentario")
-            // Aquí puedes manejar la respuesta del servidor
+            Swal.fire({
+              position: 'top-bottom',
+              icon: 'success',
+              title: 'Comentario enviado correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
           })
           .catch(error => {
-            console.error('Error al realizar la solicitud:', error);
-            setSendComentaries("¡Ha ocurrido algo inesperado!")
-            // Aquí puedes manejar los errores de la solicitud
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              footer: '<a href="">Why do I have this issue?</a>'
+            })
           });
        }
 
@@ -105,6 +114,13 @@ const Product = ({id,name,price,onAction,img, description}) => {
       name,
       price,
     })
+    Swal.fire({
+      position: 'top-bottom',
+      icon: 'success',
+      title: 'Producto añadido a la cesta correctamente.',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
   const renderizarEstrella = (puntuaciones) => {
     switch (puntuaciones) {
@@ -129,12 +145,21 @@ const Product = ({id,name,price,onAction,img, description}) => {
             RatingId: document.getElementById("selectEstrellas").value
           })
           .then(response => {
-            setSendComentaries("¡valoracion enviada con exito!")
-            console.log('Respuesta del servidor:', response.data);
+            Swal.fire({
+              position: 'top-bottom',
+              icon: 'success',
+              title: 'Puntuacion enviada correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            })
           })
           .catch(error => {
-            setSendComentaries("ha habido un problema al enviar la valoracion")
-            console.error('Error al realizar la solicitud:', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              footer: '<a href="">Why do I have this issue?</a>'
+            })
           });
   }
   return (

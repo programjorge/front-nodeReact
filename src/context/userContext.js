@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react'
+import Swal from 'sweetalert2'
 // import { redirect } from 'react-router-dom hacer un redirect en el logout hacia donde desee'
 import axios from "axios";
 
@@ -19,7 +20,12 @@ const UserProvider = ({children}) =>{
                 break;
               } else {
                 setUser(null)
-                setError("Usuario o contraseña equivocados")
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Usuario o contraseña equivocados.',
+                  footer: '<a href="">Why do I have this issue?</a>'
+                })
               }
            }
         })
