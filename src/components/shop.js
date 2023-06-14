@@ -3,6 +3,7 @@ import { CartContext } from "../context/shop.context";
 import Layout from "../layaout/layaout"
 import tarjetas from "../img/tarjetas.png"
 import logo from "../img/logo.png"
+import nohay from "../img/carrito.webp"
 
 const Shop = () => {
     const {
@@ -85,7 +86,10 @@ const Shop = () => {
                             <div><img className="logoForm" src = {logo} alt = "logo"></img></div>
                         </div>
                     </div>
-                     : <p>No hay prodcutos en el carrito</p> }
+                     : <div className="noHay">
+                        <h1>No hay prodcutos en el carrito</h1>
+                        <img src = {nohay}></img>
+                     </div> }
             </div>
       </Layout>
       )

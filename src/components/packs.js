@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "./product";
 import Swal from 'sweetalert2'
-import gamesImg from "../img/games.jpg"
+import pack from "../img/pack.jpg"
 
-const Games = () => {
+const Packs = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState();
   const closeProduct = () =>{
@@ -63,10 +63,10 @@ const Games = () => {
             {product ? (
             <Product id={product.id} name={product.name} price={product.price} img = {product.image} onAction={closeProduct} description={product.description}/>
           ) : null}
-      <div className="bannerHome" onClick={() => handleDivClick(6)}>
-          <div key='6'>
-            <b>Entra en un mundo de aventura</b><br></br>
-            <p>Olvida todo lo que sabes sobre los juegos de The Legend of Zelda. Entra en un mundo de descubrimientos, exploración y aventura en The Legend of Zelda: Breath of the Wild, un juego de la serie que rompe con las convenciones. Viaja por prados, bosques y cumbres montañosas para descubrir qué ha sido del asolado reino de Hyrule en esta aventura a cielo abierto.</p>
+      <div className="bannerPacks" onClick={() => handleDivClick(4)}>
+          <div key='4'>
+            <b>Combo MCPX</b><br></br>
+            <p>En este combo no puedes dejarlo pasar, contiene unos auriculares, teclado y monitor RGX con luces RGB de la ultima calidad y lo ultimo en el mercado</p>
           </div>
         </div>
         <div className="divBuscador">
@@ -78,9 +78,9 @@ const Games = () => {
           </div>
         </div>
         <div className="Products">
-          <h3 className="h3">Todos los Videojuegos</h3>
+          <h3 className="h3">Todos los packs</h3>
           {products.map((product) => (
-            product.categoryId === 1 ? 
+            product.categoryId === 4 ? 
               <div
                 className="divProduct"
                 key={product.id}
@@ -98,18 +98,18 @@ const Games = () => {
           ))}
         </div>
         <div className="divParrafoPromo">
-          <h3>Los mejores juegos</h3>
-          <p className="parrafoPromo">¡Celebra la emoción de los videojuegos con nuestra venta especial en la app web! Sumérgete en un mundo lleno de aventuras, desafíos y diversión ilimitada mientras disfrutas de los mejores títulos a precios increíbles!</p>
-          <p>¿Estás buscando el juego perfecto para desafiar tus habilidades estratégicas? ¿O tal vez deseas sumergirte en un apasionante universo de fantasía? No importa qué tipo de jugador seas, nuestra venta de videojuegos tiene algo para todos.</p>
+          <h3>Los mejores packs</h3>
+          <p className="parrafoPromo">Explora nuestro catálogo cuidadosamente seleccionado, donde cada producto ha sido elegido por su calidad, rendimiento y durabilidad. Queremos asegurarnos de que obtengas accesorios que cumplan con tus expectativas y te brinden una ventaja competitiva en tus sesiones de juego.En nuestra app web, te ofrecemos una amplia gama de packs gaming, desde configuraciones de PC personalizadas hasta bundles para consolas de última generación. Cada pack ha sido diseñado teniendo en cuenta las necesidades y preferencias de los jugadores más exigentes, para que puedas sumergirte de lleno en tus juegos favoritos sin preocuparte por nada más.</p>
+          <p>Nuestros packs incluyen componentes de primera calidad, como potentes procesadores, tarjetas gráficas de última generación, monitores de alta resolución y mucho más. Además, también encontrarás una selección de accesorios de primer nivel, como teclados mecánicos, ratones de precisión y auriculares envolventes, para que puedas disfrutar de una experiencia de juego inigualable.</p>
         </div>
         <div className="map">
           <div>
-            <p>Nuestra venta no se limita solo a los juegos. También encontrarás accesorios y equipos de alta calidad para mejorar tu experiencia de juego. Desde auriculares envolventes hasta controles especializados, estamos comprometidos en brindarte todo lo que necesitas para alcanzar la victoria.</p>
-            <p>¡No dejes pasar esta oportunidad! La venta de videojuegos en nuestra app web es una ocasión única para disfrutar de emocionantes aventuras a precios inigualables. Haz clic en el enlace y sumérgete en un universo de diversión inigualable. ¡Prepárate para jugar como nunca antes lo habías hecho!</p>
+            <p>Nuestra app web también te ofrece la comodidad de comparar diferentes packs y leer reseñas de otros jugadores, para que puedas tomar la mejor decisión según tus necesidades y presupuesto. Y lo mejor de todo, nuestros packs gaming vienen con precios competitivos y promociones exclusivas, para que obtengas el máximo valor por tu inversión.</p>
+            <p>Así que no esperes más, descarga nuestra app web y descubre los packs gaming que te llevarán a un nuevo nivel de diversión y emoción. Prepara tus habilidades, desafía los límites y vive la experiencia de juego definitiva. ¡Los mejores momentos te esperan con nuestros increíbles packs gaming!</p>
           </div>
-            <img src = {gamesImg} alt = "games" className="imgRelleno"></img>
+            <img src = {pack} alt = "games" className="imgRelleno"></img>
         </div>
       </Layout>
       )
 }
-export default Games;
+export default Packs;

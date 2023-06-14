@@ -536,6 +536,72 @@ h4{
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.153);
 }
+.bannerConsole{
+  background-image: url("https://images7.alphacoders.com/114/1147129.jpg");
+  width: 100%;
+  height: 350px;
+  background-size:cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  clip-path: polygon(-180% 0%, 100% 0%, 100% 100%, 100% 100%);
+}
+.bannerConsole > div{
+  padding: 20px;
+  margin: 5px;
+  max-width: 40%;
+  text-align: justify;
+  color: white;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.153);
+}
+.bannerAccesorio{
+  background-image: url("https://gamerpc.es/wp-content/uploads/2021/03/Roccat-Vulcan-TKL-Pro-770x513.jpg");
+  width: 100%;
+  height: 350px;
+  background-size:cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  clip-path: polygon(-180% 0%, 100% 0%, 100% 100%, 100% 100%);
+}
+.bannerAccesorio > div{
+  padding: 20px;
+  margin: 5px;
+  max-width: 40%;
+  text-align: justify;
+  color: white;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.153);
+}
+.bannerPacks{
+  background-image: url("https://redragon.es/content/uploads/2021/05/S101-BA-Hero-Mobile-Hero-748x920-1.jpg");
+  width: 100%;
+  height: 350px;
+  background-size:cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  clip-path: polygon(-180% 0%, 100% 0%, 100% 100%, 100% 100%);
+}
+.bannerPacks > div{
+  padding: 20px;
+  margin: 5px;
+  max-width: 40%;
+  text-align: justify;
+  color: white;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.153);
+}
+.map >div > p {
+  text-align: justify;
+}
 .intro{
   display: flex;
   flex-direction: column;
@@ -583,6 +649,15 @@ h3{
 .bannerHome:hover{
   cursor: pointer;
 }
+.bannerAccesorio:hover{
+  cursor: pointer;
+}
+.bannerPacks:hover{
+  cursor: pointer;
+}
+.bannerConsole:hover{
+  cursor: pointer;
+}
 .iconoPagar{
   width: 100%;
   height: 150px;
@@ -602,7 +677,7 @@ h3{
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin: 25px;
+  margin: 35px;
 }
 .map > div{
   display: flex;
@@ -685,4 +760,39 @@ footer > b{
   border: none;
   text-align: center;
   border-radius: 5px 0 0 5px;
+}
+.divParrafoPromo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
+.divParrafoPromo > p{
+  padding: 15px;
+  width: 550px;
+  text-align: justify;
+}
+.parrafoPromo{
+  border-top: 2px solid white;
+}
+.imgRelleno{
+  width: 450px;
+  height: 300px;
+  border-radius: 10px;
+}
+.noHay{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.noHay > img{
+  width: 80%;
+  height: 800px;
+  margin-bottom: 25px;
+  border-radius: 13px;
 }

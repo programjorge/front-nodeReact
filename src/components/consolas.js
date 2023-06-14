@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "./product";
 import Swal from 'sweetalert2'
-import gamesImg from "../img/games.jpg"
+import consolas from "../img/consolas.jpg"
 
-const Games = () => {
+const Consolas = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState();
   const closeProduct = () =>{
@@ -63,10 +63,10 @@ const Games = () => {
             {product ? (
             <Product id={product.id} name={product.name} price={product.price} img = {product.image} onAction={closeProduct} description={product.description}/>
           ) : null}
-      <div className="bannerHome" onClick={() => handleDivClick(6)}>
-          <div key='6'>
-            <b>Entra en un mundo de aventura</b><br></br>
-            <p>Olvida todo lo que sabes sobre los juegos de The Legend of Zelda. Entra en un mundo de descubrimientos, exploración y aventura en The Legend of Zelda: Breath of the Wild, un juego de la serie que rompe con las convenciones. Viaja por prados, bosques y cumbres montañosas para descubrir qué ha sido del asolado reino de Hyrule en esta aventura a cielo abierto.</p>
+      <div className="bannerConsole" onClick={() => handleDivClick(2)}>
+          <div key='2'>
+            <b>Play Station 5</b><br></br>
+            <p>¡Experimenta el futuro del entretenimiento con la asombrosa PS5! Sumérgete en una nueva era de juegos con gráficos impresionantes, velocidades de carga ultrarrápidas y una inmersión total en tus títulos favoritos. La PS5 redefine los límites de lo que es posible en los videojuegos, llevándote a mundos extraordinarios llenos de realismo y emociones intensas. Descubre una experiencia de juego sin precedentes con su potente procesador, su innovador control DualSense y su compatibilidad con la tecnología de trazado de rayos.</p>
           </div>
         </div>
         <div className="divBuscador">
@@ -78,9 +78,9 @@ const Games = () => {
           </div>
         </div>
         <div className="Products">
-          <h3 className="h3">Todos los Videojuegos</h3>
+          <h3 className="h3">Todas las Consolas</h3>
           {products.map((product) => (
-            product.categoryId === 1 ? 
+            product.categoryId === 2 ? 
               <div
                 className="divProduct"
                 key={product.id}
@@ -98,18 +98,18 @@ const Games = () => {
           ))}
         </div>
         <div className="divParrafoPromo">
-          <h3>Los mejores juegos</h3>
-          <p className="parrafoPromo">¡Celebra la emoción de los videojuegos con nuestra venta especial en la app web! Sumérgete en un mundo lleno de aventuras, desafíos y diversión ilimitada mientras disfrutas de los mejores títulos a precios increíbles!</p>
-          <p>¿Estás buscando el juego perfecto para desafiar tus habilidades estratégicas? ¿O tal vez deseas sumergirte en un apasionante universo de fantasía? No importa qué tipo de jugador seas, nuestra venta de videojuegos tiene algo para todos.</p>
+          <h3>Las mejores consolas</h3>
+          <p className="parrafoPromo">¡Bienvenido a nuestra app web, tu destino número uno para encontrar las mejores consolas y la aclamada PS en un solo lugar! Prepárate para descubrir una experiencia de juego extraordinaria que te llevará a nuevos horizontes de diversión y entretenimiento.</p>
+          <p>En nuestra app, te ofrecemos una selección cuidadosamente curada de las consolas más innovadoras del mercado, incluida la codiciada PS. Desde la última generación de PlayStation hasta las consolas más populares del momento, aquí encontrarás todo lo que necesitas para disfrutar de experiencias de juego inolvidables.</p>
         </div>
         <div className="map">
           <div>
-            <p>Nuestra venta no se limita solo a los juegos. También encontrarás accesorios y equipos de alta calidad para mejorar tu experiencia de juego. Desde auriculares envolventes hasta controles especializados, estamos comprometidos en brindarte todo lo que necesitas para alcanzar la victoria.</p>
-            <p>¡No dejes pasar esta oportunidad! La venta de videojuegos en nuestra app web es una ocasión única para disfrutar de emocionantes aventuras a precios inigualables. Haz clic en el enlace y sumérgete en un universo de diversión inigualable. ¡Prepárate para jugar como nunca antes lo habías hecho!</p>
+            <p>Ya sea que estés buscando una consola para ti o quieras hacer un regalo especial, nuestra app web tiene todo lo que necesitas. Explora nuestra amplia gama de opciones, desde packs completos hasta ediciones limitadas, y encuentra la consola perfecta que se adapte a tus necesidades y preferencias.</p>
+            <p>Pero eso no es todo. También ofrecemos una variedad de accesorios y complementos que elevarán tu experiencia de juego a otro nivel. Desde mandos adicionales hasta auriculares de alta calidad, estamos comprometidos en brindarte todo lo necesario para disfrutar al máximo cada partida</p>
           </div>
-            <img src = {gamesImg} alt = "games" className="imgRelleno"></img>
+            <img src = {consolas} alt = "games" className="imgRelleno"></img>
         </div>
       </Layout>
       )
 }
-export default Games;
+export default Consolas;
