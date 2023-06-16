@@ -1,20 +1,56 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { CartContext } from "../context/shop.context";
 import Layout from "../layaout/layaout"
 import tarjetas from "../img/tarjetas.png"
 import logo from "../img/logo.png"
 import nohay from "../img/carrito.webp"
+import Swal from 'sweetalert2'
 
 const Shop = () => {
     const {
         cartItems, 
-        addToCart, 
         removeFromCart, 
         clearCart } = useContext(CartContext);
     var precioTotal = 0;
 
     const handleDelete = (id) =>{
         removeFromCart(id)
+    }
+    const realizarPedido = () =>{
+        let nombreReceptor = document.getElementById("nombreReceptor").value
+        let adress = document.getElementById("adress").value
+        let telefono = document.getElementById("telefono").value
+        let tarjeta = document.getElementById("tarjeta").value
+        let mesExpiracion = document.getElementById("mesExpiracion").value
+        let añExpiracion = document.getElementById("añExpiracion").value
+        let cvc = document.getElementById("cvc").value
+
+        let expresionTelefono = /^[679]\d{8}$/
+        if(!expresionTelefono.test(telefono)){
+            telefono = undefined
+        }
+        if(localStorage.getItem("user")){
+            alert("guardando..")
+        }else{
+            if(nombreReceptor && adress && telefono && tarjeta && mesExpiracion && añExpiracion && cvc){
+                Swal.fire({
+                    position: 'top-bottom',
+                    icon: 'success',
+                    title: 'Su pedido se realizado correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                clearCart()
+            } else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Debes rellenar los campos correctamente',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                  })
+            }
+
+        }
     }
     
     return (
@@ -25,7 +61,7 @@ const Shop = () => {
                     <div className="shop">
                         <div className="shopItems">
                         {cartItems.map((product, index) =>{
-                            {precioTotal += product.price * product.cantidad}
+                            precioTotal += product.price * product.cantidad
                             return (
                             <div id = {"producto"+index} className="productoCarrito">
                                 <b id = {"name"+index}>{product.name}</b>
@@ -74,21 +110,21 @@ const Shop = () => {
                                     <input id = "tarjeta" placeholder="Nº tarjeta" type="number" required></input>
                                 </div>
                                 
-                                <img id = "imgTarjetas" src={tarjetas}></img>
+                                <img id = "imgTarjetas" src={tarjetas} alt = "imgTargetas"></img>
                                 <div className="pisoPortal">
                                     <input id = "mesExpiracion" placeholder="mes expiración" type="number" required></input>
                                     <input id = "añExpiracion" placeholder="año expiración" type="text" required></input>
                                 </div>
                                 <input id = "cvc" placeholder="CVC" type="number" required></input>
                                 
-                                <button>Realizar pedido</button>
+                                <button onClick={realizarPedido}>Realizar pedido</button>
                             </div>
                             <div><img className="logoForm" src = {logo} alt = "logo"></img></div>
                         </div>
                     </div>
                      : <div className="noHay">
                         <h1>No hay prodcutos en el carrito</h1>
-                        <img src = {nohay}></img>
+                        <img src = {nohay} alt = "Imagen no hay carrito"></img>
                      </div> }
             </div>
       </Layout>
