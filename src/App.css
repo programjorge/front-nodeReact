@@ -614,6 +614,15 @@ h4{
 .intro > h2{
   color: white;
 }
+.reg{
+  color: red;
+}
+.desabilitado{
+  background-color: grey !important;
+}
+.reg:hover{
+  cursor: pointer;
+}
 .intro-cols{
   display: flex;
   justify-content: space-around;

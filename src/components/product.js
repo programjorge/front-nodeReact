@@ -9,12 +9,15 @@ import estrella2 from "../img/2estrellas-removebg-preview.jpg"
 import estrella3 from "../img/3estrellas-removebg-preview.jpg"
 import estrella4 from "../img/4estrellas-removebg-preview.jpg"
 import Swal from 'sweetalert2'
+import {UserContext} from "../context/userContext"
+
 
 const Product = ({id,name,price,onAction,img, description}) => {
   const [comentaries, setComentaries] = useState(null);
   const [sendComentaries, setSendComentaries] = useState()
   const [puntuacion, setPuntuacion] = useState()
   const [contador, setContador] = useState(0)
+  const [productoComprado, setProductoComprado] = useState(false)
 
   const {
     cartItems,
@@ -23,7 +26,17 @@ const Product = ({id,name,price,onAction,img, description}) => {
     clearCart,
   } = useContext(CartContext)
 
-
+  const {
+    user
+    } = useContext(UserContext)
+  const desabilitado = () =>{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No pueden opinar sobre los productos que no ha comprado',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+  }
   function toggleComentarios(event) {
     event.preventDefault();
     const divComentarios = document.querySelector('.todosComentarios');
@@ -81,6 +94,32 @@ const Product = ({id,name,price,onAction,img, description}) => {
         console.error(error);
       }
     };
+    const getUserComprador = async() =>{
+      let idUsuario = undefined
+        await axios.get("http://localhost:8080/api")
+        .then((response) => {
+          for(let i = 0; i < response.data.length; i++){
+              if(user.userName=== response.data[i].userName && user.password === response.data[i].Password){
+                idUsuario = response.data[i].id
+                break;
+              }
+          }
+        }).then(()=>{
+          axios.get(
+            "http://localhost:8080/api/pedidos"
+          ).then(response =>{
+            console.log(response)
+            for(let i = 0; i < response.data.length; i++){
+              if(idUsuario=== response.data[i].UserId && id === response.data[i].ProductId){
+                setProductoComprado(true)
+                break;
+              }
+          }
+          })
+
+        })
+        console.log(productoComprado)
+    }
     const getPuntuaciones = async() =>{
       try{
         await axios.get("http://localhost:8080/api/ratings")
@@ -105,6 +144,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
     }
     getComentaries();
     getPuntuaciones();
+    getUserComprador();
     
   }, [id]);
 
@@ -179,7 +219,8 @@ const Product = ({id,name,price,onAction,img, description}) => {
         {comentaries ? (
           
           <div className="verComentarios">
-          <div className="divPuntuar">            
+          {productoComprado ? 
+            <div className="divPuntuar">            
               <img className="estrella" src={estrella5B}></img>
                 <select id = "selectEstrellas">
                     <option className="selectEstrellas" value = "1">1</option>
@@ -188,10 +229,10 @@ const Product = ({id,name,price,onAction,img, description}) => {
                     <option className="selectEstrellas" value = "4">4</option>
                     <option className="selectEstrellas" value = "5">5</option>
                 </select>
-                <button className="puntuar" onClick={updateRating}>Puntuar Producto</button></div>
+                <button className="puntuar" onClick={updateRating}>Puntuar Producto</button>
+              </div> :""}
+
             <a onClick={toggleComentarios}>Ver comentarios</a>
-
-
             {comentaries.length > 0 ? (
               <div className="todosComentarios">
               {comentaries.map((comentary) => (
@@ -209,9 +250,14 @@ const Product = ({id,name,price,onAction,img, description}) => {
         )}
         <div className="divComentario">
           <textarea id="comentario" placeholder="Escriba aquí su comentario"></textarea>
+          {productoComprado ?          
           <button onClick={postComentary}>
             <b>Comentar</b>
-          </button>
+          </button> :    
+          <button className="desabilitado" onClick={desabilitado}>
+            <b>Comentar</b>
+          </button>}
+
           {sendComentaries ? <p className="completo">{sendComentaries}</p> : <p className="precio">{sendComentaries}</p>}
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-x cerrarProduct" viewBox="0 0 16 16" onClick={onAction}>

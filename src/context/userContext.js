@@ -18,7 +18,7 @@ const UserProvider = ({children}) =>{
                 localStorage.setItem("contraseña",response.data[i].Password)
                 setUser(user)
                 break;
-              } else {
+              } if(i === response.data.length -1 && user.userName !== response.data[i].userName && user.password !== response.data[i].Password) {
                 setUser(null)
                 Swal.fire({
                   icon: 'error',
@@ -43,13 +43,26 @@ const UserProvider = ({children}) =>{
             userName: userReg.userNameReg,
             Password: userReg.passwordReg
           }
-          axios.post("http://localhost:8080/api", data)
+          await axios.post("http://localhost:8080/api", data)
           .then(() =>{
-            log({userName:userReg.userNameReg,password:userReg.passwordReg})
-            return true
+            Swal.fire({
+              position: 'top-bottom',
+              icon: 'success',
+              title: 'Usuario registrado correctamente',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(()=>{
+              log({userName:userReg.userNameReg,password:userReg.passwordReg})
+              return true
+            })
           })
           .catch(error => {
-            setError("Usuario ya registrado")
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Esta cuenta ya esta creada',
+              footer: '<a href="">Why do I have this issue?</a>'
+            })
             return false
           });
         }

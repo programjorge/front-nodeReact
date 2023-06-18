@@ -151,7 +151,7 @@ const Header = () => {
             required
            />
           <input type="submit" className="botonAction" />
-          <a onClick={openRegister}>Registrar</a>
+          <a className="reg" onClick={openRegister}>Registrar</a>
         </form>
       </div>
       )}
