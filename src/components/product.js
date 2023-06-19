@@ -95,7 +95,8 @@ const Product = ({id,name,price,onAction,img, description}) => {
       }
     };
     const getUserComprador = async() =>{
-      let idUsuario = undefined
+      if(user){
+        let idUsuario = undefined
         await axios.get("http://localhost:8080/api")
         .then((response) => {
           for(let i = 0; i < response.data.length; i++){
@@ -118,6 +119,8 @@ const Product = ({id,name,price,onAction,img, description}) => {
           })
 
         })
+      }
+
         console.log(productoComprado)
     }
     const getPuntuaciones = async() =>{

@@ -10,6 +10,7 @@ import UserProvider from "./context/userContext";
 import { CartProvider } from "./context/shop.context";
 import Accesorios from "./components/accesorios";
 import Packs from "./components/packs";
+import RegistroPedidos from "./components/registroPedidos";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/consolas" element={<Consolas />} />
           <Route path="/accesories" element={<Accesorios />} />
           <Route path="/packs" element={<Packs />} />
+          <Route path="/registro de pedidos" element = {<RegistroPedidos/>}/>
         </Routes>
       </BrowserRouter>
       </CartProvider>

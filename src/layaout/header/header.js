@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import logo from "../../img/logo.png"
 import {UserContext} from "../../context/userContext"
+import { useNavigate } from 'react-router-dom';
+
 const Header = () => {
 
   const {
@@ -53,7 +55,11 @@ const Header = () => {
       userNameReg:"",
       passwordReg:""
     })
+    const navigate = useNavigate();
 
+    const navegarRegistro = () =>{
+      navigate("/registro de pedidos")
+    }
 
     // const [regComplete, setregComplete] = useState("")
 
@@ -120,7 +126,7 @@ const Header = () => {
               <img className="logo" alt = "logo" src = {logo}></img>
             </div>
             <div>
-              <b>{user.userName}</b>
+              <b onClick={navegarRegistro}>{user.userName}</b>
               <button className="buttonLogeado" onClick={logOut}>Log out</button>
             </div>
           </div>

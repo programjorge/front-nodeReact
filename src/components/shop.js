@@ -9,6 +9,7 @@ import Swal from 'sweetalert2'
 import axios from "axios";
 
 const Shop = () => {
+
     const {
         cartItems, 
         removeFromCart, 
@@ -23,25 +24,51 @@ const Shop = () => {
         removeFromCart(id)
     }
     const postPedido = async() =>{
-        let idUsuario = undefined
-        await axios.get("http://localhost:8080/api")
-        .then((response) => {
-           for(let i = 0; i < response.data.length; i++){
-              if(user.userName=== response.data[i].userName && user.password === response.data[i].Password){
-                idUsuario = response.data[i].id
-                break;
-              }
-           }
-        }).then(()=>{
+        try{
+            let idUsuario = undefined
+            await axios.get("http://localhost:8080/api")
+            .then((response) => {
+               for(let i = 0; i < response.data.length; i++){
+                  if(user.userName=== response.data[i].userName && user.password === response.data[i].Password){
+                    idUsuario = response.data[i].id
+                    break;
+                  }
+               }
+            }).then(()=>{
+    
+                const url = 'http://localhost:8080/api/pedidos';
+                for(let i = 0; i<cartItems.length; i++){
+                      axios.post(url, {
+                        ProductId: cartItems[i].id,
+                        userId: idUsuario
+                      })
+                  }
+            }).then(()=>{
+                var pedido = JSON.stringify(cartItems);
+                const url = 'http://localhost:8080/api/registro/pedidos';
+                      axios.post(url, {
+                        pedido: pedido,
+                        userId: idUsuario
+                      })
+            }).then(()=>{
 
-            const url = 'http://localhost:8080/api/pedidos';
-            for(let i = 0; i<cartItems.length; i++){
-                  axios.post(url, {
-                    ProductId: cartItems[i].id,
-                    userId: idUsuario
-                  })
-              }
-        })
+                Swal.fire({
+                    position: 'top-bottom',
+                    icon: 'success',
+                    title: 'Su pedido se realizado correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+        } catch {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Pedido cancelado, algo raro ha ocurrido',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
+        }
+    
     }
     const realizarPedido = () =>{
         let nombreReceptor = document.getElementById("nombreReceptor").value
@@ -57,9 +84,8 @@ const Shop = () => {
             telefono = undefined
         }
         if(localStorage.getItem("user")){
-            console.log("posteando")
             postPedido()
-
+            clearCart()
             
         }else{
             if(nombreReceptor && adress && telefono && tarjeta && mesExpiracion && añExpiracion && cvc){
