@@ -36,6 +36,16 @@ const UserProvider = ({children}) =>{
         setUser(null)
     }
     const registerUser = async(userReg) =>{
+        let expresionContraseña = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/
+        if(!expresionContraseña.test(userReg.passwordReg)){
+          userReg.passwordReg = ""
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'El usuario debe tener una contraseña con letras, numeros y minimo 6 caracteres',
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+        } 
         if(userReg.userNameReg !== "" && userReg.passwordReg !== ""){
           let data = {
             title: 'Mi post registro',

@@ -5,6 +5,7 @@ import axios from "axios";
 import {UserContext} from "../context/userContext"
 import Swal from 'sweetalert2'
 import Product from "./product";
+import imagen from "../img/moto.png"
 
 const RegistroPedidos = () =>{
 
@@ -57,23 +58,30 @@ const RegistroPedidos = () =>{
     useEffect(() => {
         getRegistroPedido()
       }, []);
+      var precioTotal = 0;
     return (
         <Layout>
+            <img className="moto" src = {imagen}></img>
             {registroPedido ? 
-            <div>
+            <div className="todosRegistros">
             {registroPedido.map((pedido,index) => (
-                <div key={index}>
-                    <h3>pedido {index+1}</h3>
+                <div key={index} className="divRegistroPedidos">
+                    <h3>Pedido {index+1}</h3>
                     {pedido.map((producto) =>(
-                        <div key= {producto.length}>
-                            <p key={producto.name}>{producto.name}</p>   
-                            <p key={producto.price}>{producto.price}</p> 
-                            <p key={producto.cantidad}>{producto.cantidad}</p> 
+                        <div key= {producto.length} className="divRegistroPedidos2">
+                            <p key={producto.name}><b>Producto:</b> {producto.name} ,</p> 
+                            <p><b>Precio:</b> {producto.price}€ ,</p> 
+                            <p><b>Cantidad:</b>x{producto.cantidad}</p>
+                            <p hidden>{precioTotal += producto.price * producto.cantidad}</p>
+                            
                         </div>
                     ))}
+                    <b>Precio total: {precioTotal}€ </b>
+                    <p hidden>{precioTotal = 0}</p>
                 </div>
             ))}
             </div> : "No hay registro de pedidos"}
+
          </Layout>
     )
 }

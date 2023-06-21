@@ -79,13 +79,39 @@ const Shop = () => {
         let añExpiracion = document.getElementById("añExpiracion").value
         let cvc = document.getElementById("cvc").value
 
-        let expresionTelefono = /^[679]\d{8}$/
+        let expresionTelefono = /^[679]\d{8}$/;
+        let expresionTarjeta =  /^\d{16}$/;
+        let expresionCVC = /^\d{3}$/;
+        let expresionMesTarj =  /^(1[0-2]|[1-9])$/
+        let expresionAño = /^(2[3-9])$/
+        
         if(!expresionTelefono.test(telefono)){
             telefono = undefined
         }
+        if(!expresionTarjeta.test(tarjeta)){
+            tarjeta = undefined
+        }
+        if(!expresionCVC.test(cvc)){
+            cvc = undefined
+        }
+        if(!expresionMesTarj.test(mesExpiracion)){
+            mesExpiracion = undefined
+        }
+        if(!expresionAño.test(añExpiracion)){
+            añExpiracion = undefined
+        }         
         if(localStorage.getItem("user")){
-            postPedido()
-            clearCart()
+            if(nombreReceptor && adress && telefono && tarjeta && mesExpiracion && añExpiracion && cvc){
+                postPedido()
+                clearCart()
+            } else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Debes rellenar los campos correctamente',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+            }
             
         }else{
             if(nombreReceptor && adress && telefono && tarjeta && mesExpiracion && añExpiracion && cvc){
