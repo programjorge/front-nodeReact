@@ -2,7 +2,7 @@
   width: 100%;
   height: 15%;
   background-color: white;
-  color: red;
+  color: #F44336;
   margin: 0px;
 }
 .headerLogeado{
@@ -12,7 +12,7 @@
 }
 .buttonLogeado {
   border: none;
-  background-color: red;
+  background-color: #F44336;
   color: white;
 }
 .buttonLogeado:hover{
@@ -23,11 +23,11 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: rgb(61, 59, 59);
+  background-color: #263238;
   color: white;
 }
 .parrafoError{
-  color: red;
+  color: #F44336;
   margin-right: 10px;
 }
 
@@ -43,15 +43,15 @@ html, body {
   padding-left: 10px;
   padding-right: 10px;
   background-color: white;
-  color: red;
+  color: #F44336;
 }
 .input{
   margin: 15px;
   padding: 10px;
   border-radius: 3px;
-  border: 2px solid red;
+  border: 2px solid #F44336;
   text-align: center;
-  color: red;
+  color: #F44336;
 
 }
 .botonAction{
@@ -63,7 +63,7 @@ html, body {
   text-decoration: none;
   outline: none;
   color: white;
-  background-color: red;
+  background-color: #F44336;
   border: none;
   border-radius: 15px;
 }
@@ -78,13 +78,13 @@ html, body {
   text-decoration: none;
   outline: none;
   color: white;
-  background-color: red;
+  background-color: #F44336;
   border: none;
   border-radius: 15px;
 }
 .botonAction:active{
-  border: 1px solid red;
-  color: red;
+  border: 1px solid #F44336;
+  color: #F44336;
   background-color: white;
   transform: translateY(4px);
 }
@@ -106,7 +106,7 @@ html, body {
   justify-content: center;
   align-items: center;
   background-color: white;
-  color: red;
+  color: #F44336;
   width: 350px;
   height: 300px;
   border-radius: 5px;
@@ -125,7 +125,7 @@ html, body {
   position: absolute;
   top: 5px;
   right: 5px;
-  color: red;
+  color: #F44336;
 }
 .cerrar:hover{
   cursor: pointer;
@@ -159,7 +159,7 @@ html, body {
   margin: 2%;
 }
 .precio{
-  color: red;
+  color: #F44336;
 }
 .imgProduct{
   width: 100%;
@@ -170,7 +170,7 @@ html, body {
 .navBar{
   display: flex;
   flex-direction: row;
-  background-color: red;
+  background-color: #F44336;
   color: white;
   width: 100%;
 
@@ -189,10 +189,10 @@ html, body {
   margin-right: 10px;
 }
 .enlace:hover {
-  color: black;
+  color: #263238;
 }
 .divPrecio{
-  background-color: red;
+  background-color: #F44336;
   color: white;
   border-radius: 5px;
 }
@@ -223,7 +223,7 @@ html, body {
   position: relative;
   margin-top: 5%;
   background-color: white;
-  color: black;
+  color: #263238;
   border-radius: 0px 10px 10px 0px;
   padding-top: 20px;
   width: 45%;
@@ -242,7 +242,7 @@ html, body {
   margin-bottom: 20px;
 }
 .namePrice > b{
-  background-color: red;
+  background-color: #F44336;
   text-align: center;
   width: 100%;
   color: white;
@@ -267,7 +267,7 @@ html, body {
 }
 .divComentario > button{
   width: 20%;
-  background-color: red;
+  background-color: #F44336;
   color: white;
   border-radius: 3px;
   border: none;
@@ -287,7 +287,7 @@ button:hover{
   padding: 5px;
   border-radius: 3px;
   color: white;
-  background-color: red;
+  background-color: #F44336;
   margin-right: 25%
 }
 .verComentarios > a:hover{
@@ -303,7 +303,7 @@ button:hover{
 }
 .noProduct{
   margin-top: 10px;
-  color: red;
+  color: #F44336;
 }
 .todosComentarios{
   overflow: hidden;
@@ -313,7 +313,7 @@ button:hover{
 }
 .comentarios{
   width: 93%;
-  border: 1px solid red;
+  border: 1px solid #F44336;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 5px;
@@ -333,7 +333,7 @@ button:hover{
   align-items: center;
 }
 .cerrarProduct{
-  color: red;
+  color: #F44336;
   position: absolute;
   top: 0;
   right: -50px;
@@ -343,7 +343,7 @@ button:hover{
   cursor: pointer;
 }
 #selectEstrellas ,#selectEstrellas >option, #selectEstrellas{
-  background-color: red;
+  background-color: #F44336;
   color: white;
   border: none;
   border-radius: 3px;
@@ -358,7 +358,7 @@ button:hover{
   margin-top: 20px;
 }
 .puntuar{
-  background-color: red;
+  background-color: #F44336;
   border: none;
   color: white;
   border-radius: 3px;
@@ -381,7 +381,7 @@ button:hover{
   justify-content: space-around;
 }
 .precioAñadir > a, .precioAñadir > b{
-  background-color: red;
+  background-color: #F44336;
   padding: 15px;
   border-radius: 13px;
   color: white;
@@ -404,7 +404,7 @@ button:hover{
   flex-direction: row;
   justify-content:space-between;
   background-color: white;
-  color: black;
+  color: #263238;
   margin: 10px;
   align-items: center;
   border-radius: 5px;
@@ -417,7 +417,7 @@ button:hover{
   cursor: pointer;
 }
 .precioTotal{
-  background-color: red;
+  background-color: #F44336;
   color: white;
   width: 97%;
   padding: 15px;
@@ -458,7 +458,7 @@ button:hover{
   color: white;
 }
 .formLogitos > svg{
-  background-color: red;
+  background-color: #F44336;
   border-radius: 50%;
   width: 20px;
   margin-left: 5px;
@@ -466,15 +466,15 @@ button:hover{
 }
 .formPedido > button {
   padding: 10px;
-  background-color: red;
+  background-color: #F44336;
   color:white;
   width: 150px;
   text-align: center;
   height: 50px;
 }
 h4{
-  color: red;
-  border-bottom: 1px solid red;
+  color: #F44336;
+  border-bottom: 1px solid #F44336;
 }
 .pisoPortal {
   width: 100%;
@@ -608,14 +608,14 @@ h4{
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: red;
+  background-color: #F44336;
   margin-bottom: 25px;
 }
 .intro > h2{
   color: white;
 }
 .reg{
-  color: red;
+  color: #F44336;
 }
 .desabilitado{
   background-color: grey !important;
@@ -632,7 +632,7 @@ h4{
   margin-right: 4%;
   margin-bottom: 25px;
   border-radius: 5px;
-  color: red;
+  color: #F44336;
 }
 .intro-cols > div {
   width: 25%;
@@ -653,7 +653,7 @@ h3{
 .intro-cols > div >p {
   padding: 10px;
   text-align: center;
-  border-top: 1px solid red;
+  border-top: 1px solid #F44336;
 }
 .bannerHome:hover{
   cursor: pointer;
@@ -695,7 +695,7 @@ h3{
 
 }
 footer{
-  background-color: red;
+  background-color: #F44336;
   color: white;
   display: flex;
   flex-direction: column;
@@ -728,7 +728,7 @@ footer > b{
   height: 50px;
 }
 .redes:hover{
-  color: black;
+  color: #263238;
   cursor: pointer;
 }
 .enlace2{
@@ -756,7 +756,7 @@ footer > b{
 .divInputBuscador > svg{
   width: 25px;
   height: 80%;
-  background-color: red;
+  background-color: #F44336;
   border-radius: 5px;
   border: none;
   border-radius: 0 5px 5px 0;
@@ -776,7 +776,7 @@ footer > b{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: #F44336;
 }
 .divParrafoPromo > p{
   padding: 15px;
@@ -807,7 +807,7 @@ footer > b{
 }
 .divRegistroPedidos{
   background-color:white;
-  color: rgb(255, 0, 0);
+  color: #F44336;
   justify-content: center;
   align-items: center;
   padding-top: 10px;
@@ -824,7 +824,7 @@ footer > b{
   height: 350px;
 }
 .divRegistroPedidos2{
-  background-color: rgb(255, 0, 0);
+  background-color:#F44336;
   color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
@@ -846,7 +846,9 @@ footer > b{
   text-align: center;
   flex-wrap: wrap;
 }
-
+#nombreUsuario:hover{
+  cursor: pointer;
+}
 @media (max-width:450px){
   .navBar{
     display: block;
@@ -857,7 +859,7 @@ footer > b{
   .headerBlock{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
   }
   form{
@@ -885,6 +887,28 @@ footer > b{
   }
   .bannerConsole >div {
     max-width: 100%;
+    padding: 0;
+  }
+  .bannerAccesorio{
+    clip-path: none;
+    margin-bottom: 15px;
+  }
+  .bannerAccesorio > div {
+    max-width: 100%;
+  }
+  .bannerPacks{
+    clip-path: none;
+    margin-bottom: 15px;
+  }
+  .bannerPacks > div{
+    max-width: 100%;
+    padding: 0;
+  }
+  .noHay > img{
+    height: auto;
+  }
+  .noHay > h1{
+    text-align: center;
   }
   .h3{
     position:static;
@@ -930,5 +954,56 @@ iframe {
 }
 footer{
   padding: 10px;
+}
+.productScreen{
+  flex-direction: column;
+}
+.leftScreen{
+  width: 100%;
+  margin: 0;
+}
+.namePrice{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.namePrice > b{
+  width: 50%;
+}
+.rightScreen{
+  width: 100%;
+  margin: 0;
+  height: 550px;
+}
+.cerrarProduct {
+  right: -20px;
+}
+.totalForm{
+  flex-direction: column;
+  margin: 0;
+  width: 0%;
+}
+.formLogitos{
+  flex-direction: column;
+}
+.leftScreen > img{
+  width: 90%;
+  height: 200px;
+}
+.estrella{
+  display: none;
+}
+.logoForm{
+  display: none;
+}
+.precioTotal{
+  width: 50%;
+}
+.todosRegistros{
+  flex-direction: column;
+}
+.divRegistroPedidos{
+  width: 94%;
 }
 }

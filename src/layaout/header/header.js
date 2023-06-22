@@ -126,7 +126,7 @@ const Header = () => {
               <img className="logo" alt = "logo" src = {logo}></img>
             </div>
             <div>
-              <b onClick={navegarRegistro}>{user.userName}</b>
+              <b id = "nombreUsuario" onClick={navegarRegistro}>{user.userName}</b>
               <button className="buttonLogeado" onClick={logOut}>Log out</button>
             </div>
           </div>
