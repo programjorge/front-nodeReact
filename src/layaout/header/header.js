@@ -1,7 +1,6 @@
-import axios from "axios";
 import { useState, useContext } from "react";
-import logo from "../../img/logo.png"
-import {UserContext} from "../../context/userContext"
+import logo from "../../img/logo.png";
+import {UserContext} from "../../context/userContext";
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
@@ -12,17 +11,17 @@ const Header = () => {
     logOut,
     error,
     registerUser
-  } = useContext(UserContext)
+  } = useContext(UserContext);
     //metodos
 
     //metodo para abrir la pestaña de regitro
     const openRegister = () =>{
-      setShowRegister(true)
+      setShowRegister(true);
     }
 
     //metodo para cerrar la pestaña de registro
     const closeRegister = () =>{
-      setShowRegister(false)
+      setShowRegister(false);
     }
 
     //metodo para conseguir almacenar los value en el usuario
@@ -58,28 +57,20 @@ const Header = () => {
     const navigate = useNavigate();
 
     const navegarRegistro = () =>{
-      navigate("/registro de pedidos")
+      navigate("/registro de pedidos");
     }
-
-    // const [regComplete, setregComplete] = useState("")
-
-    //mensaje de error login
-    // const [error, setError] = useState("")
-
-    //mensaje de error registro
-    const [errorReg, setErrorReg] = useState("")
 
     //reg hook
     const [showRegister, setShowRegister] = useState(false)
 
     const handleRegister = (event) =>{
-      event.preventDefault()
-      const registrado = registerUser(userReg)
-      setShowRegister(!registrado)
+      event.preventDefault();
+      const registrado = registerUser(userReg);
+      setShowRegister(!registrado);
     }
     const handleLogin = (event) =>{
-      event.preventDefault()
-      log(userLog)
+      event.preventDefault();
+      log(userLog);
     }
 
     //definicion de la pantalla de registro
@@ -111,7 +102,6 @@ const Header = () => {
             className="input"
             required
           />
-           <a className="parrafoError">{errorReg}</a>
           <button className="botonAction2">Registrar</button>
         </form>
       </div>

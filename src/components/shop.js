@@ -1,27 +1,28 @@
 import { useContext } from "react";
 import { CartContext} from "../context/shop.context";
-import {UserContext} from "../context/userContext"
-import Layout from "../layaout/layaout"
-import tarjetas from "../img/tarjetas.png"
-import logo from "../img/logo.png"
-import nohay from "../img/carrito.webp"
-import Swal from 'sweetalert2'
+import {UserContext} from "../context/userContext";
+import Layout from "../layaout/layaout";
+import tarjetas from "../img/tarjetas.png";
+import logo from "../img/logo.png";
+import nohay from "../img/carrito.webp";
+import Swal from 'sweetalert2';
 import axios from "axios";
 
 const Shop = () => {
 
     const {
         cartItems, 
-        removeFromCart, 
+        removeFromCart,
+        addCantidad,
         clearCart } = useContext(CartContext);
     const {
         user
-        } = useContext(UserContext)
+        } = useContext(UserContext);
 
     var precioTotal = 0;
 
     const handleDelete = (id) =>{
-        removeFromCart(id)
+        removeFromCart(id);
     }
     const postPedido = async() =>{
         try{
@@ -30,7 +31,7 @@ const Shop = () => {
             .then((response) => {
                for(let i = 0; i < response.data.length; i++){
                   if(user.userName=== response.data[i].userName && user.password === response.data[i].Password){
-                    idUsuario = response.data[i].id
+                    idUsuario = response.data[i].id;
                     break;
                   }
                }
@@ -41,7 +42,7 @@ const Shop = () => {
                       axios.post(url, {
                         ProductId: cartItems[i].id,
                         userId: idUsuario
-                      })
+                      });
                   }
             }).then(()=>{
                 var pedido = JSON.stringify(cartItems);
@@ -49,16 +50,15 @@ const Shop = () => {
                       axios.post(url, {
                         pedido: pedido,
                         userId: idUsuario
-                      })
+                      });
             }).then(()=>{
-
                 Swal.fire({
                     position: 'top-bottom',
                     icon: 'success',
                     title: 'Su pedido se realizado correctamente',
                     showConfirmButton: false,
                     timer: 1500
-                })
+                });
             })
         } catch {
             Swal.fire({
@@ -66,51 +66,51 @@ const Shop = () => {
                 title: 'Oops...',
                 text: 'Pedido cancelado, algo raro ha ocurrido',
                 footer: '<a href="">Why do I have this issue?</a>'
-              })
+              });
         }
     
     }
     const realizarPedido = () =>{
-        let nombreReceptor = document.getElementById("nombreReceptor").value
-        let adress = document.getElementById("adress").value
-        let telefono = document.getElementById("telefono").value
-        let tarjeta = document.getElementById("tarjeta").value
-        let mesExpiracion = document.getElementById("mesExpiracion").value
-        let añExpiracion = document.getElementById("añExpiracion").value
-        let cvc = document.getElementById("cvc").value
+        let nombreReceptor = document.getElementById("nombreReceptor").value;
+        let adress = document.getElementById("adress").value;
+        let telefono = document.getElementById("telefono").value;
+        let tarjeta = document.getElementById("tarjeta").value;
+        let mesExpiracion = document.getElementById("mesExpiracion").value;
+        let añExpiracion = document.getElementById("añExpiracion").value;
+        let cvc = document.getElementById("cvc").value;
 
         let expresionTelefono = /^[679]\d{8}$/;
         let expresionTarjeta =  /^\d{16}$/;
         let expresionCVC = /^\d{3}$/;
-        let expresionMesTarj =  /^(1[0-2]|[1-9])$/
-        let expresionAño = /^(2[3-9])$/
+        let expresionMesTarj =  /^(1[0-2]|[1-9])$/;
+        let expresionAño = /^(2[3-9])$/;
         
         if(!expresionTelefono.test(telefono)){
-            telefono = undefined
+            telefono = undefined;
         }
         if(!expresionTarjeta.test(tarjeta)){
-            tarjeta = undefined
+            tarjeta = undefined;
         }
         if(!expresionCVC.test(cvc)){
-            cvc = undefined
+            cvc = undefined;
         }
         if(!expresionMesTarj.test(mesExpiracion)){
-            mesExpiracion = undefined
+            mesExpiracion = undefined;
         }
         if(!expresionAño.test(añExpiracion)){
-            añExpiracion = undefined
+            añExpiracion = undefined;
         }         
         if(localStorage.getItem("user")){
             if(nombreReceptor && adress && telefono && tarjeta && mesExpiracion && añExpiracion && cvc){
-                postPedido()
-                clearCart()
+                postPedido();
+                clearCart();
             } else{
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Debes rellenar los campos correctamente',
                     footer: '<a href="">Why do I have this issue?</a>'
-                })
+                });
             }
             
         }else{
@@ -121,7 +121,7 @@ const Shop = () => {
                     title: 'Su pedido se realizado correctamente',
                     showConfirmButton: false,
                     timer: 1500
-                })
+                });
                 clearCart()
             } else{
                 Swal.fire({
@@ -129,7 +129,7 @@ const Shop = () => {
                     title: 'Oops...',
                     text: 'Debes rellenar los campos correctamente',
                     footer: '<a href="">Why do I have this issue?</a>'
-                  })
+                  });
             }
 
         }
@@ -151,6 +151,10 @@ const Shop = () => {
                                 <b id = {"cantidad"+index}>{product.cantidad}</b>
                                 <svg onClick={() => handleDelete(product.id)} id = {"eliminar"+index} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-trash3-fill precio" viewBox="0 0 16 16">
                                     <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                </svg>
+                                <svg onClick={() => addCantidad(product.id)} xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-plus-circle precio" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                 </svg>
                             </div>)
                             

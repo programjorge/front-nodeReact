@@ -11,12 +11,11 @@ export const CartProvider = ({ children }) => {
   const addToCart = (product) => {
 
     setCartItems(state => {
-      let cantidad = state.filter(item => item.id === product.id)[0]?.cantidad
-      console.log(cantidad)
+      let cantidad = state.filter(item => item.id === product.id)[0]?.cantidad;
       if(cantidad){
-        const index = state.findIndex(item => item.id === product.id)
-        const newState = [...state]
-        newState.splice(index,1,{...product,cantidad: cantidad+1})
+        const index = state.findIndex(item => item.id === product.id);
+        const newState = [...state];
+        newState.splice(index,1,{...product,cantidad: cantidad+1});
         return newState
       }
        else{
@@ -34,7 +33,6 @@ export const CartProvider = ({ children }) => {
     setCartItems((prevProducts) => {
       const updatedProducts = prevProducts.map((product) => {
         if (product.id === productId) {
-          console.log(product)
           if (product.cantidad > 1) {
             return {
               ...product,
@@ -43,6 +41,24 @@ export const CartProvider = ({ children }) => {
           }
           // Si la cantidad es 1 o menos, el producto se elimina del array
           return null;
+        }
+        return product;
+      });
+  
+      // Filtramos los productos nulos (productos eliminados)
+      const filteredProducts = updatedProducts.filter((product) => product !== null);
+      return filteredProducts;
+    });
+  };
+
+  const addCantidad = (productId) => {
+    setCartItems((prevProducts) => {
+      const updatedProducts = prevProducts.map((product) => {
+        if (product.id === productId) {
+            return {
+              ...product,
+              cantidad: product.cantidad + 1
+            };
         }
         return product;
       });
@@ -64,6 +80,7 @@ export const CartProvider = ({ children }) => {
     addToCart,
     removeFromCart,
     clearCart,
+    addCantidad
   };
 
   return (
