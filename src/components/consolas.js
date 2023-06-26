@@ -1,24 +1,22 @@
-
-import Layout from "../layaout/layaout"
+import Layout from "../layaout/layaout";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "./product";
-import Swal from 'sweetalert2'
-import consolas from "../img/consolas.jpg"
+import Swal from 'sweetalert2';
+import consolas from "../img/consolas.jpg";
 
 const Consolas = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState();
   const closeProduct = () =>{
-    setProduct()
+    setProduct();
   }
   const search = () =>{
-    let busqueda = document.getElementById("buscador").value
+    let busqueda = document.getElementById("buscador").value;
     for(let i = 0; i<products.length; i++){
-      console.log(products[i], " ")
       if(products[i].name === busqueda){
-        handleDivClick(products[i].id)
-        break
+        handleDivClick(products[i].id);
+        break;
       } else{
         if(i === products.length-1 && products[i].name !== busqueda){
           Swal.fire({
@@ -26,7 +24,7 @@ const Consolas = () => {
             title: 'Oops...',
             text: 'No se ha encontrado el producto que buscas',
             footer: '<a href="">Why do I have this issue?</a>'
-          })
+          });
         }
       }
     }

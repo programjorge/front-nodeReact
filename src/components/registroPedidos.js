@@ -1,34 +1,26 @@
 import { useState, useContext,useEffect} from "react";
-import { CartContext } from "../context/shop.context";
 import Layout from "../layaout/layaout";
 import axios from "axios";
-import {UserContext} from "../context/userContext"
-import Swal from 'sweetalert2'
-import Product from "./product";
-import imagen from "../img/moto.png"
+import {UserContext} from "../context/userContext";
+import Swal from 'sweetalert2';
+import imagen from "../img/moto.png";
 
 const RegistroPedidos = () =>{
 
-    const [registroPedido, setRegistroPedido] = useState([])
-
-    const {
-    cartItems, 
-    addToCart, 
-    removeFromCart, 
-    clearCart } = useContext(CartContext);
+    const [registroPedido, setRegistroPedido] = useState([]);
 
     const {
     user
-    } = useContext(UserContext)
+    } = useContext(UserContext);
 
     const getRegistroPedido = async() =>{
         try{
-            let idUsuario = undefined
+            let idUsuario = undefined;
             await axios.get("http://localhost:8080/api")
             .then((response) => {
                for(let i = 0; i < response.data.length; i++){
                   if(user.userName=== response.data[i].userName && user.password === response.data[i].Password){
-                    idUsuario = response.data[i].id
+                    idUsuario = response.data[i].id;
                     break;
                   }
                }
@@ -36,14 +28,14 @@ const RegistroPedidos = () =>{
                 const url = 'http://localhost:8080/api/registro/pedidos';
                 axios.get(url)
                 .then(res =>{
-                    let arrayPedidos = []
+                    let arrayPedidos = [];
                     for(let i = 0; i<res.data.length; i++){
                         if(res.data[i].userId === idUsuario){
-                            let pedido = JSON.parse(res.data[i].pedido)
-                            arrayPedidos.push(pedido)
+                            let pedido = JSON.parse(res.data[i].pedido);
+                            arrayPedidos.push(pedido);
                         }
                     }
-                    setRegistroPedido(arrayPedidos)
+                    setRegistroPedido(arrayPedidos);
                 })
             })
         } catch{
@@ -52,11 +44,11 @@ const RegistroPedidos = () =>{
                 title: 'Oops...',
                 text: 'Ha ocurrido algo inesperado! vuelva a intentar mas tarde',
                 footer: '<a href="">Why do I have this issue?</a>'
-              })
+              });
         }
     }
     useEffect(() => {
-        getRegistroPedido()
+        getRegistroPedido();
       }, []);
       var precioTotal = 0;
     return (
@@ -85,4 +77,4 @@ const RegistroPedidos = () =>{
          </Layout>
     )
 }
-export default RegistroPedidos
+export default RegistroPedidos;

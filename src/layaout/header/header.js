@@ -61,7 +61,7 @@ const Header = () => {
     }
 
     //reg hook
-    const [showRegister, setShowRegister] = useState(false)
+    const [showRegister, setShowRegister] = useState(false);
 
     const handleRegister = (event) =>{
       event.preventDefault();

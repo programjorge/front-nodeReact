@@ -1,23 +1,21 @@
-
-import Layout from "../layaout/layaout"
+import Layout from "../layaout/layaout";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "./product";
-import Swal from 'sweetalert2'
-import pack from "../img/pack.jpg"
+import Swal from 'sweetalert2';
+import pack from "../img/pack.jpg";
 
 const Packs = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState();
   const closeProduct = () =>{
-    setProduct()
+    setProduct();
   }
   const search = () =>{
-    let busqueda = document.getElementById("buscador").value
+    let busqueda = document.getElementById("buscador").value;
     for(let i = 0; i<products.length; i++){
-      console.log(products[i], " ")
       if(products[i].name === busqueda){
-        handleDivClick(products[i].id)
+        handleDivClick(products[i].id);
         break
       } else{
         if(i === products.length-1 && products[i].name !== busqueda){
@@ -26,7 +24,7 @@ const Packs = () => {
             title: 'Oops...',
             text: 'No se ha encontrado el producto que buscas',
             footer: '<a href="">Why do I have this issue?</a>'
-          })
+          });
         }
       }
     }
@@ -55,7 +53,6 @@ const Packs = () => {
       const response = await axios.get("http://localhost:8080/api/products");
       setProducts(response.data);
     } catch (error) {
-      // console.error(error);
     }
   };
     return (

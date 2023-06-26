@@ -16,13 +16,13 @@ export const CartProvider = ({ children }) => {
         const index = state.findIndex(item => item.id === product.id);
         const newState = [...state];
         newState.splice(index,1,{...product,cantidad: cantidad+1});
-        return newState
+        return newState;
       }
        else{
         return [
           ...state,
           {...product,cantidad:1}
-        ]
+        ];
       }
     });
 

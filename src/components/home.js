@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "../layaout/layaout";
 import Product from "./product";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -22,7 +22,7 @@ const Home = () => {
     }
   };
   const closeProduct = () =>{
-      setProduct()
+      setProduct();
   }
 
   const handleDivClick = async (id) => {
@@ -39,12 +39,11 @@ const Home = () => {
   };
   
   const search = () =>{
-    let busqueda = document.getElementById("buscador").value
+    let busqueda = document.getElementById("buscador").value;
     for(let i = 0; i<products.length; i++){
-      console.log(products[i], " ")
       if(products[i].name === busqueda){
-        handleDivClick(products[i].id)
-        break
+        handleDivClick(products[i].id);
+        break;
       } else{
         if(i === products.length-1 && products[i].name != busqueda){
           Swal.fire({
@@ -52,7 +51,7 @@ const Home = () => {
             title: 'Oops...',
             text: 'No se ha encontrado el producto que buscas',
             footer: '<a href="">Why do I have this issue?</a>'
-          })
+          });
         }
       }
     }
@@ -63,7 +62,7 @@ const Home = () => {
         {product ? (
             <Product id={product.id} name={product.name} price={product.price} img = {product.image} onAction={closeProduct} description={product.description}/>
           ) : null}
-          <div className="bannerHome" onClick={() => handleDivClick(6)}>
+          <div className="bannerHome" onClick={() => handleDivClick(7)}>
           <div key='6'>
             <b>Entra en un mundo de aventura</b><br></br>
             <p>Olvida todo lo que sabes sobre los juegos de The Legend of Zelda. Entra en un mundo de descubrimientos, exploración y aventura en The Legend of Zelda: Breath of the Wild, un juego de la serie que rompe con las convenciones. Viaja por prados, bosques y cumbres montañosas para descubrir qué ha sido del asolado reino de Hyrule en esta aventura a cielo abierto.</p>

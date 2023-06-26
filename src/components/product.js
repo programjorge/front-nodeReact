@@ -1,41 +1,41 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import estrella5 from "../img/5estrellas-removebg-preview.jpg"
-import estrella5B from "../img/5estrellas.png"
+import estrella5 from "../img/5estrellas-removebg-preview.jpg";
+import estrella5B from "../img/5estrellas.png";
 import { CartContext } from "../context/shop.context";
-import estrella0 from "../img/0estrellas-removebg-preview.jpg"
-import estrella1 from "../img/1estrellas-removebg-preview.jpg"
-import estrella2 from "../img/2estrellas-removebg-preview.jpg"
-import estrella3 from "../img/3estrellas-removebg-preview.jpg"
-import estrella4 from "../img/4estrellas-removebg-preview.jpg"
-import Swal from 'sweetalert2'
-import {UserContext} from "../context/userContext"
+import estrella0 from "../img/0estrellas-removebg-preview.jpg";
+import estrella1 from "../img/1estrellas-removebg-preview.jpg";
+import estrella2 from "../img/2estrellas-removebg-preview.jpg";
+import estrella3 from "../img/3estrellas-removebg-preview.jpg";
+import estrella4 from "../img/4estrellas-removebg-preview.jpg";
+import Swal from 'sweetalert2';
+import {UserContext} from "../context/userContext";
 
 
 const Product = ({id,name,price,onAction,img, description}) => {
   const [comentaries, setComentaries] = useState(null);
-  const [sendComentaries, setSendComentaries] = useState()
-  const [puntuacion, setPuntuacion] = useState()
-  const [contador, setContador] = useState(0)
-  const [productoComprado, setProductoComprado] = useState(false)
+  const [sendComentaries, setSendComentaries] = useState();
+  const [puntuacion, setPuntuacion] = useState();
+  const [contador, setContador] = useState(0);
+  const [productoComprado, setProductoComprado] = useState(false);
 
   const {
     cartItems,
     addToCart,
     removeFromCart,
     clearCart,
-  } = useContext(CartContext)
+  } = useContext(CartContext);
 
   const {
     user
-    } = useContext(UserContext)
+    } = useContext(UserContext);
   const desabilitado = () =>{
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
       text: 'No pueden opinar sobre los productos que no ha comprado',
       footer: '<a href="">Why do I have this issue?</a>'
-    })
+    });
   }
   function toggleComentarios(event) {
     event.preventDefault();
@@ -54,9 +54,9 @@ const Product = ({id,name,price,onAction,img, description}) => {
   }
   const postComentary = () =>{
     const url = 'http://localhost:8080/api/comentaries';
-      const comentario = document.getElementById("comentario").value
+      const comentario = document.getElementById("comentario").value;
       if(!comentario){
-        return console.log("el comentario no puede estar vacio")
+        return console.log("el comentario no puede estar vacio");
       } else{
           axios.post(url, {
             productId:id,
@@ -69,7 +69,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
               title: 'Comentario enviado correctamente',
               showConfirmButton: false,
               timer: 1500
-            })
+            });
           })
           .catch(error => {
             Swal.fire({
@@ -77,7 +77,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
               title: 'Oops...',
               text: 'Something went wrong!',
               footer: '<a href="">Why do I have this issue?</a>'
-            })
+            });
           });
        }
 
@@ -96,12 +96,12 @@ const Product = ({id,name,price,onAction,img, description}) => {
     };
     const getUserComprador = async() =>{
       if(user){
-        let idUsuario = undefined
+        let idUsuario = undefined;
         await axios.get("http://localhost:8080/api")
         .then((response) => {
           for(let i = 0; i < response.data.length; i++){
               if(user.userName=== response.data[i].userName && user.password === response.data[i].Password){
-                idUsuario = response.data[i].id
+                idUsuario = response.data[i].id;
                 break;
               }
           }
@@ -109,10 +109,9 @@ const Product = ({id,name,price,onAction,img, description}) => {
           axios.get(
             "http://localhost:8080/api/pedidos"
           ).then(response =>{
-            console.log(response)
             for(let i = 0; i < response.data.length; i++){
               if(idUsuario=== response.data[i].UserId && id === response.data[i].ProductId){
-                setProductoComprado(true)
+                setProductoComprado(true);
                 break;
               }
           }
@@ -120,25 +119,23 @@ const Product = ({id,name,price,onAction,img, description}) => {
 
         })
       }
-
-        console.log(productoComprado)
     }
     const getPuntuaciones = async() =>{
       try{
         await axios.get("http://localhost:8080/api/ratings")
         .then(res =>{
           let contador = 0;
-          let totalPuntuaciones = 0
-          let puntuacionFinal = 0
+          let totalPuntuaciones = 0;
+          let puntuacionFinal = 0;
           res.data.map((puntuacion) =>  {
             if(puntuacion.ProductId === id){
               contador += 1;
-              totalPuntuaciones += puntuacion.RatingId
+              totalPuntuaciones += puntuacion.RatingId;
             }
           })
-          puntuacionFinal = totalPuntuaciones/contador
+          puntuacionFinal = totalPuntuaciones/contador;
           setPuntuacion(Math.round(puntuacionFinal));
-          setContador(contador)
+          setContador(contador);
         })
 
       }catch (error) {
@@ -156,14 +153,14 @@ const Product = ({id,name,price,onAction,img, description}) => {
       id,
       name,
       price,
-    })
+    });
     Swal.fire({
       position: 'top-bottom',
       icon: 'success',
       title: 'Producto añadido a la cesta correctamente.',
       showConfirmButton: false,
       timer: 1500
-    })
+    });
   }
   const renderizarEstrella = (puntuaciones) => {
     switch (puntuaciones) {
@@ -176,9 +173,9 @@ const Product = ({id,name,price,onAction,img, description}) => {
       case 4:
         return <img className="estrellas" src={estrella4} alt="Imagen 3" />;
         case 5:
-          return <img className="estrellas" src={estrella5} alt="Imagen 3" />
+          return <img className="estrellas" src={estrella5} alt="Imagen 4" />;
           default:
-            return <img className="estrellas" src={estrella0} alt="Imagen 3" />;
+            return <img className="estrellas" src={estrella0} alt="Imagen default" />;
     }
   };
   const updateRating = async() =>{
@@ -194,7 +191,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
               title: 'Puntuacion enviada correctamente',
               showConfirmButton: false,
               timer: 1500
-            })
+            });
           })
           .catch(error => {
             Swal.fire({
@@ -202,7 +199,7 @@ const Product = ({id,name,price,onAction,img, description}) => {
               title: 'Oops...',
               text: 'Something went wrong!',
               footer: '<a href="">Why do I have this issue?</a>'
-            })
+            });
           });
   }
   return (

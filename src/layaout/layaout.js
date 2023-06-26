@@ -1,6 +1,6 @@
-import Header from "./header/header"
-import Footer from "./footer/footer"
-import Nav from "../components/navBar.js"
+import Header from "./header/header";
+import Footer from "./footer/footer";
+import Nav from "../components/navBar.js";
 const Layout = ({children}) =>{
     return (
         <>
@@ -18,4 +18,4 @@ const Layout = ({children}) =>{
     )
 }
 
-export default Layout
+export default Layout;

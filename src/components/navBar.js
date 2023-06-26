@@ -11,26 +11,24 @@ const Nav = () =>{
     clearCart } = useContext(CartContext);
   
     const navigate = useNavigate();
-// const mostrar = () =>{
-// console.log(cartItems)
-// }
+
     const navegarShop = () =>{
-      navigate("/shopcard")
+      navigate("/shopcard");
     }
     const navegarHome = () =>{
-      navigate("/")
+      navigate("/");
     }
     const navegarConsolas = () =>{
-      navigate("/consolas")
+      navigate("/consolas");
     }
     const navegarGames = () =>{
-      navigate("/games")
+      navigate("/games");
     }
     const navegarAccesories = () =>{
-      navigate("/accesories")
+      navigate("/accesories");
     }
     const navegarPacks = () =>{
-      navigate("/packs")
+      navigate("/packs");
     }
     return (
     <div className='navBar'>
@@ -69,4 +67,4 @@ const Nav = () =>{
     </div>
     )
 }
-export default Nav
+export default Nav;
